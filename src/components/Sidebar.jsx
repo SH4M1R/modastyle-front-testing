@@ -103,13 +103,6 @@ export default function Sidebar() {
                 <span>Gestión de Empleados</span>
               </Link>
               <Link
-                to="/proveedores"
-                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors"
-              >
-                <UserIcon className="h-5 w-5 text-indigo-400" />
-                <span>Gestión de Proveedores</span>
-              </Link>
-              <Link
                 to="/Productos"
                 className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors"
               >
