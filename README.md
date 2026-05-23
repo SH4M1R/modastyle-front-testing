@@ -3,7 +3,6 @@
 Este proyecto corresponde al **frontend de la intranet**, desarrollado con **React + Vite**.  
 Permite la interacción del usuario con el sistema, gestionando productos, empleados, proveedores, ventas y reportes a través de una interfaz moderna y responsiva.
 
----
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -138,20 +137,3 @@ El frontend se comunica con el backend (Spring Boot) a través de peticiones HTT
 - Validación de formularios  
 - Diseño adaptativo con Tailwind CSS  
 - Integración con API REST del backend  
-
----
-
-## 📜 Licencia
-
-Este proyecto es de uso educativo y puede ser modificado libremente con fines académicos o de práctica.
-
----
-
-## Autores
-
-- Abel Castillo
-- Juan Pablo Inonan
-- Jeffrey Perez
-- Elmer Calisalla
-
-
