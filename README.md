@@ -1,7 +1,7 @@
 # Frontend de la Intranet
 
 Este proyecto corresponde al **frontend de la intranet**, desarrollado con **React + Vite**.  
-Permite la interacción del usuario con el sistema, gestionando productos, empleados, proveedores, ventas y reportes a través de una interfaz moderna y responsiva.
+Permite la interacción del usuario con el sistema, gestionando productos, empleados, ventas y reportes a través de una interfaz moderna.
 
 
 ## 🚀 Tecnologías Utilizadas
