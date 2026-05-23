@@ -77,8 +77,7 @@ export default function ModalProducto({ open, onClose, onSave, producto = null, 
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="bg-white rounded-lg w-full max-w-2xl p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-indigo-700">{form.idProducto ? 'Editar Producto' : 'Agregar Producto'}</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">Cerrar</button>
+          <h2 className="text-lg font-bold text-indigo-700">{form.idProducto ? 'EDITAR PRODUCTO' : 'AGREGAR PRODUCTO'}</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
@@ -157,8 +156,8 @@ export default function ModalProducto({ open, onClose, onSave, producto = null, 
           </div>
 
           <div className="flex items-center justify-end gap-3 mt-4">
-            <button type="button" onClick={onClose} className="px-4 py-2 border rounded">Cancelar</button>
-            <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded">Guardar</button>
+            <button type="button" onClick={onClose} className="px-4 py-2 border border-red-600 text-red-600 rounded-lg">Cancelar</button>
+            <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-lg">Guardar</button>
           </div>
         </form>
       </div>

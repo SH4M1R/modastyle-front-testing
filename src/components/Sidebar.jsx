@@ -90,55 +90,28 @@ export default function Sidebar() {
               <UserGroupIcon className="h-5 w-5 text-indigo-400" />
               <span>Administración</span>
             </div>
-            <span className="text-sm">{openAdmin ? "▲" : "▼"}</span>
           </button>
-
-          <Collapsible open={openAdmin}>
             <div className="ml-4 mt-1 space-y-1 py-2">
               <Link
                 to="/empleados"
-                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors"
-              >
+                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors">
                 <UserIcon className="h-5 w-5 text-indigo-400" />
                 <span>Gestión de Empleados</span>
               </Link>
               <Link
                 to="/Productos"
-                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors"
-              >
+                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors">
                 <ClipboardDocumentListIcon className="h-5 w-5 text-indigo-400" />
                 <span>Gestión de Productos</span>
               </Link>
             </div>
-          </Collapsible>
         </div>
-
-        {/* Análisis y Configuración */}
-        <div>
-          <button
-            onClick={() => setOpenAnalisis(!openAnalisis)}
-            className="w-full text-left px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors flex justify-between items-center"
-            aria-expanded={openAnalisis}
-          >
-            <div className="flex items-center gap-2">
+          <Link
+            to="/reportes"
+              className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors">
               <ChartBarIcon className="h-5 w-5 text-indigo-400" />
-              <span>Análisis & Configuración</span>
-            </div>
-            <span className="text-sm">{openAnalisis ? "▲" : "▼"}</span>
-          </button>
-
-          <Collapsible open={openAnalisis}>
-            <div className="ml-4 mt-1 space-y-1 py-2">
-              <Link
-                to="/reportes"
-                className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-700/40 transition-colors"
-              >
-                <ChartBarIcon className="h-5 w-5 text-indigo-400" />
-                <span>Reportes</span>
-              </Link>
-            </div>
-          </Collapsible>
-        </div>
+              <span>Reportes de Venta</span>
+          </Link>
       </nav>
 
       {/* Cerrar sesión */}

@@ -64,10 +64,10 @@ export default function Reportes() {
       {ventas.length === 0 ? (
         <p className="text-gray-700">No hay ventas registradas</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
-            <thead className="bg-indigo-600 text-white">
-              <tr>
+        <div className="overflow-x-auto rounded-2xl">
+                <table className="min-w-full divide-y divide-indigo-500">
+                  <thead className="bg-indigo-200">
+                    <tr>
                 <th className="py-2 px-3 text-left">ID</th>
                 <th className="py-2 px-3 text-left">Cliente</th>
                 <th className="py-2 px-3 text-left">Fecha</th>

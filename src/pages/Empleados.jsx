@@ -67,13 +67,13 @@ export default function Empleados() {
       </div>
 
       {/* Tabla */}
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+      <div className="overflow-x-auto rounded-2xl">
         {loading ? (
           <p className="text-center py-4 text-gray-600">Cargando empleados...</p>
         ) : (
-          <table className="min-w-full text-sm text-left text-gray-700">
-            <thead className="bg-indigo-600 text-white">
-              <tr>
+                <table className="min-w-full divide-y divide-indigo-500">
+                  <thead className="bg-indigo-200">
+                    <tr>
                 <th className="px-4 py-3">ID</th>
                 <th className="px-4 py-3">Nombre</th>
                 <th className="px-4 py-3">Username</th>
@@ -92,13 +92,13 @@ export default function Empleados() {
                     <td className="px-4 py-3 text-center flex justify-center gap-2">
                       {/* Botón Editar */}
                       <button onClick={() => handleOpenModal(emp)} title="Editar empleado">
-                      <PencilIcon className="h-5 w-5 text-indigo-600" />
+                      <PencilIcon className="h-5 w-5 text-indigo-500 hover:text-indigo-700" />
                         <i className="bi bi-pencil-square"></i>
                       </button>
 
                       {/* Botón Eliminar */}
                       <button onClick={() => handleDelete(emp.idEmpleado)} title="Eliminar empleado">
-                        <Trash2Icon className="h-5 w-5 text-red-600" />
+                        <Trash2Icon className="h-5 w-5 text-red-500 hover:text-red-700" />
                         <i className="bi bi-trash-fill"></i>
                       </button>
                     </td>

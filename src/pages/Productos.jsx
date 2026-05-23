@@ -143,19 +143,19 @@ export default function Productos() {
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <header className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-semibold text-indigo-700">Gestión de Productos</h1>
+          <h1 className="text-2xl font-bold text-indigo-700">GESTIÓN DE PRODUCTOS</h1>
           <div className="flex gap-3">
             <button
               onClick={() => setShowModalCategoria(true)}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-700"
+              className="px-4 py-2 bg-indigo-500 text-white rounded-2xl shadow-sm hover:bg-indigo-700"
             >
-              Agregar Categoría
+              + Categoría
             </button>
             <button
               onClick={() => { setEditingProducto(null); setShowModalProducto(true); }}
-              className="px-4 py-2 bg-indigo-500 text-white rounded-md shadow-sm hover:bg-indigo-600"
+              className="px-4 py-2 bg-indigo-500 text-white rounded-2xl shadow-sm hover:bg-indigo-700"
             >
-              Agregar Producto
+              + Producto
             </button>
           </div>
         </header>
@@ -166,7 +166,7 @@ export default function Productos() {
               value={query}
               onChange={e => { setQuery(e.target.value); setPage(1); }}
               placeholder="Buscar productos..."
-              className="border rounded-md px-3 py-2 w-96"
+              className="border rounded-md px-3 py-2 w-96 border-indigo-400 text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300"
             />
             <div className="text-sm text-gray-500">Resultados por página: {PAGE_SIZE}</div>
           </div>
@@ -175,18 +175,18 @@ export default function Productos() {
             {loading ? (
               <div className="p-6 text-center">Cargando...</div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-indigo-50">
+              <div className="overflow-x-auto rounded-2xl">
+                <table className="min-w-full divide-y divide-indigo-500">
+                  <thead className="bg-indigo-200">
                     <tr>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">#</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Nombre</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Precio Venta</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Stock</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Categoría</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Imagen</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Estado</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-indigo-700">Acciones</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">#</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Nombre</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Precio Venta</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Stock</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Categoría</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Imagen</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Estado</th>
+                      <th className="px-4 py-2 text-left text-sm font-bold text-indigo-700">Acciones</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-100">
@@ -194,7 +194,7 @@ export default function Productos() {
                       <tr key={p.idProducto || idx}>
                         <td className="px-4 py-2 text-sm">{(page-1)*PAGE_SIZE + idx + 1}</td>
                         <td className="px-4 py-2 text-sm">{p.producto || p.Producto}</td>
-                        <td className="px-4 py-2 text-sm">{p.precioVenta || p.PrecioVenta}</td>
+                        <td className="px-4 py-2 text-sm">S/ {p.precioVenta || p.PrecioVenta}</td>
                         <td className="px-4 py-2 text-sm flex items-center gap-2">
                           <span>{p.stock}</span>
                           <button
@@ -221,14 +221,14 @@ export default function Productos() {
                         <td className="px-4 py-2 text-sm flex gap-2">
                           <button
                             onClick={() => { setEditingProducto(p); setShowModalProducto(true); }}
-                            className="p-2 rounded-md border hover:bg-gray-50"
+                            className="p-2 rounded-md hover:bg-gray-50"
                             title="Editar"
                           >
                             <PencilIcon className="h-5 w-5 text-indigo-600" />
                           </button>
                           <button
                             onClick={() => handleDeleteProducto(p.idProducto)}
-                            className="p-2 rounded-md border hover:bg-gray-50"
+                            className="p-2 rounded-md hover:bg-gray-50"
                             title="Eliminar"
                           >
                             <TrashIcon className="h-5 w-5 text-red-600" />
