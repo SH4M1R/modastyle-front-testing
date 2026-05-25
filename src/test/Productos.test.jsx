@@ -37,8 +37,14 @@ describe('Página Productos', () => {
       expect(screen.getByText('Polo Nike')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('S/ 80')).toBeInTheDocument();
+    // IMPRESIONES EN CONSOLA
+    console.log("TEST RF-F01 PASS");
+    console.log("Producto renderizado: Polo Nike");
+    console.log("Precio renderizado: S/ 80");
+    console.log("Stock renderizado: 10");
 
+    screen.debug();
+    expect(screen.getByText('S/ 80')).toBeInTheDocument();
     expect(screen.getByText('10')).toBeInTheDocument();
 
   });
