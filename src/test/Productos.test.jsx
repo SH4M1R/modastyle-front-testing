@@ -3,50 +3,80 @@ import Productos from '../pages/Productos';
 import axios from 'axios';
 
 jest.mock('axios');
+jest.mock('../components/ModalProducto', () => () => <div data-testid="modal-producto">ModalProducto</div>);
+jest.mock('../components/ModalCategoria', () => () => <div data-testid="modal-categoria">ModalCategoria</div>);
 
-jest.mock('../components/ModalProducto', () => () => <div>ModalProducto</div>);
-jest.mock('../components/ModalCategoria', () => () => <div>ModalCategoria</div>);
+describe('Pagina Productos - Pruebas de Cobertura', () => {
+  afterEach(() => { 
+    jest.clearAllMocks(); 
+  });
 
-describe('Página Productos', () => {
-
-  test('renderiza productos obtenidos desde la API', async () => {
+  test('RF-F01: Renderiza productos obtenidos desde la API ', async () => {
+    const mockProducto = {
+      idProducto: 1,
+      producto: 'Polo Nike',
+      precioVenta: 80,
+      stock: 10,
+      estado: true,
+      categoria: { categoria: 'Polos' },
+      imagen: '/img/polo.jpg'
+    };
 
     axios.get
-      .mockResolvedValueOnce({
-        data: []
-      })
-      .mockResolvedValueOnce({
-        data: [
-          {
-            idProducto: 1,
-            producto: 'Polo Nike',
-            precioVenta: 80,
-            stock: 10,
-            estado: true,
-            categoria: {
-              categoria: 'Polos'
-            },
-            imagen: '/img/polo.jpg'
-          }
-        ]
+      .mockResolvedValueOnce({ data: [] }) 
+      .mockResolvedValueOnce({      
+        data: [mockProducto]
       });
 
     render(<Productos />);
 
     await waitFor(() => {
-      expect(screen.getByText('Polo Nike')).toBeInTheDocument();
+      expect(screen.getByText(mockProducto.producto)).toBeInTheDocument();
     });
 
-    // IMPRESIONES EN CONSOLA
-    console.log("TEST RF-F01 PASS");
-    console.log("Producto renderizado: Polo Nike");
-    console.log("Precio renderizado: S/ 80");
-    console.log("Stock renderizado: 10");
+    expect(screen.getByText(new RegExp(mockProducto.precioVenta.toString()))).toBeInTheDocument();
+    expect(screen.getByText(mockProducto.stock.toString())).toBeInTheDocument();
 
-    screen.debug();
-    expect(screen.getByText('S/ 80')).toBeInTheDocument();
-    expect(screen.getByText('10')).toBeInTheDocument();
-
+    console.log(`
+  +--------------------------------------------------------+
+  |  TEST RF-F01 PASS (Cobertura: Caso Exitoso)            |
+  +--------------------------------------------------------+
+  |  Componente: Pagina Productos                          |
+  |  Producto:   ${mockProducto.producto}                                 |
+  |  Precio:     S/ ${mockProducto.precioVenta}                                     |
+  |  Stock:      ${mockProducto.stock}                                        |
+  +--------------------------------------------------------+
+    `);
   });
 
+  test('RF-F02: Maneja correctamente el estado de error de la API', async () => {
+    const spyConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    const errorCategorias = new Error('Error al conectar categorías');
+    const errorProductos = new Error('Error al conectar productos');
+
+    axios.get
+      .mockRejectedValueOnce(errorCategorias)
+      .mockRejectedValueOnce(errorProductos);
+
+    render(<Productos />);
+
+    await waitFor(() => {
+      expect(screen.getByText('GESTIÓN DE PRODUCTOS')).toBeInTheDocument();
+    });
+    
+    expect(spyConsoleError).toHaveBeenCalled();
+
+    console.log(`
+  +--------------------------------------------------------+
+  |  TEST RF-F02 PASS (Cobertura: Manejo de Errores)       |
+  +--------------------------------------------------------+
+  |  Se ejecutaron y cubrieron las líneas de los CATCH     |
+  |  Interceptado: "${errorCategorias.message}"
+  |  Interceptado: "${errorProductos.message}"
+  +--------------------------------------------------------+
+    `);
+    
+    spyConsoleError.mockRestore();
+  });
 });
